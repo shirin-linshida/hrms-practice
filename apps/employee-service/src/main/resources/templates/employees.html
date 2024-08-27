@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employees</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        a {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: white;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+<h1>Employees List</h1>
+<a href="/employees/new">Add New Employee</a>
+<ul>
+    <li th:each="employee : ${employees}">
+        <a th:href="@{/employees/{id}(id=${employee.id})}" th:text="${employee.firstName}"></a>
+        <a th:href="@{/employees/edit/{id}(id=${employee.id})}">Edit</a>
+        <a th:href="@{/employees/delete/{id}(id=${employee.id})}">Delete</a>
+    </li>
+</ul>
+</body>
+</html>
